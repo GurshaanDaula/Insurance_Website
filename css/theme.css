@@ -1,0 +1,199 @@
+:root {
+    --brand: #1e5eff;
+    /* main blue */
+    --brand-dark: #1547c7;
+    --brand-soft: #eef4ff;
+}
+
+.hero.is-brand {
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+}
+
+.button.is-brand {
+    background-color: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+}
+
+.button.is-brand:hover {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+    color: #fff;
+}
+
+.has-background-brand-soft {
+    background: var(--brand-soft);
+}
+
+.icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-soft);
+    font-weight: 700;
+    color: var(--brand-dark);
+}
+
+body {
+    padding-top: 3.25rem;
+}
+
+/* ====== GLOBAL POLISH ====== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding-top: 3.25rem;
+    /* fixed navbar spacing */
+}
+
+.section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
+
+/* Softer default text rendering */
+body,
+button,
+input,
+select,
+textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ====== NAVBAR LINK ANIMATIONS ====== */
+.navbar .navbar-item {
+    position: relative;
+    transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.navbar .navbar-item:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+/* Underline slide animation */
+.navbar .navbar-item::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 10px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.75);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms ease;
+}
+
+.navbar .navbar-item:hover::after {
+    transform: scaleX(1);
+}
+
+/* Active page highlight (we'll set .is-active via JS) */
+.navbar .navbar-item.is-active {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar .navbar-item.is-active::after {
+    transform: scaleX(1);
+}
+
+/* ====== HERO TEXT ANIMATION ====== */
+.hero .title,
+.hero .subtitle {
+    animation: fadeUp 520ms ease both;
+}
+
+.hero .subtitle {
+    animation-delay: 80ms;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== CARD / BOX HOVER EFFECTS ====== */
+.box {
+    border-radius: 16px;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 8px 22px rgba(10, 10, 10, 0.06);
+}
+
+.box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(10, 10, 10, 0.10);
+}
+
+/* Make icon circles pop slightly on hover */
+.box:hover .icon-circle {
+    transform: scale(1.06);
+}
+
+.icon-circle {
+    transition: transform 180ms ease;
+}
+
+/* ====== BUTTON HOVER (SUBTLE SHINE) ====== */
+.button {
+    border-radius: 12px;
+    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(10, 10, 10, 0.12);
+    filter: brightness(1.02);
+}
+
+/* Optional: add a "shimmer" on brand button hover */
+.button.is-brand {
+    position: relative;
+    overflow: hidden;
+}
+
+.button.is-brand::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -60%;
+    width: 60%;
+    height: 180%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(25deg) translateX(-120%);
+    transition: transform 420ms ease;
+}
+
+.button.is-brand:hover::after {
+    transform: rotate(25deg) translateX(260%);
+}
+
+/* ====== LINK HOVER (NICE COLOR SHIFT) ====== */
+a:not(.navbar-item):not(.button) {
+    transition: color 160ms ease, text-shadow 160ms ease;
+}
+
+a:not(.navbar-item):not(.button):hover {
+    text-shadow: 0 10px 18px rgba(30, 94, 255, 0.16);
+}
+
+/* ====== OPTIONAL: REDUCE MOTION SUPPORT ====== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
